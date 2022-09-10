@@ -3,9 +3,9 @@
 Accept and respond with one of multiple types in axum handlers.
 
 This is espacially useful to create endpoints which take one of multiple message formats.
-This can be done with [`AxumEither`] directly. This can get quite verbose for more than two
-types. For this the [`one_of`] macro can be used to express the type and the [`map_one_of`] or
-[`match_one_of`] macros can be used to work with these types ergonomically.
+This can be done with `AxumEither` directly. This can get quite verbose for more than two
+types. For this the `one_of` macro can be used to express the type and the `map_one_of` or
+`match_one_of` macros can be used to work with these types ergonomically.
 
 Note that this probes all variants from left to right, for performance it would still better to provide multiple api endpoints or match
 over the content-type header. 
