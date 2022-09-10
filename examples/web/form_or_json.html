@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>axum_either test</title>
+    <script>
+        async function submit_hello_json() {
+            const elems = document.getElementById('hello-form').elements;
+            const resp = await fetch(
+                '/hello', 
+                {
+                    method: "POST",
+                    body: JSON.stringify({name: elems.name.value}),
+                    headers: {
+                        'content-type': 'application/json'
+                    }
+                }
+            );
+            const out = document.getElementById('hello-output');
+            out.innerText = await resp.text();
+                        
+            return false;
+        }
+            
+
+        async function submit_hello_error() {
+            const resp = await fetch('/hello', {method: "POST"});
+            const out = document.getElementById('hello-output');
+            out.innerText = await resp.text();
+                        
+            return false;
+        } 
+    </script>
+</head>
+<body style="background-color: #181818; color: white;">
+    <h1> axum_ether Test </h1>
+    <h2> Hello </h2>
+    <form action="/hello" method="POST" id="hello-form">
+        Name: <input type="text" name="name" id="hello_user_name"/>
+        <br/>
+        <input type="submit" value="submit form" >
+        <br/>
+        <button type="button" value="submit error" onclick="submit_hello_json()" >
+            submit json
+        </button>
+        <br/>
+        <button type="button" value="submit error" onclick="submit_hello_error()" >
+            submit error
+        </button>
+    </form>
+    <p id="hello-output"> 
+        
+    </p>
+    <h2> Hello Error </h2>
+    <form action="/hello" method="POST">
+        <input type="submit" value="submit hello error form" >
+    </form>
+</body>
+</html>
