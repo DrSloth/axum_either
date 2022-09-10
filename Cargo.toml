@@ -2,6 +2,12 @@
 name = "axum_either"
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/DrSloth/axum_either"
+documentation = "https://docs.rs/axum_either"
+categories = ["axum", "web-programming", "utility"]
+description = "Accept or respond with one of multiple types in axum"
 
 [features]
 into_either = ["either"]
